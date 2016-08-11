@@ -120,3 +120,14 @@ def eval(r, p):
 
 myrobot = robot()
 
+# Setting the initial position
+myrobot.set(30,50,pi/2)
+
+# Move the robot
+myrobot.move(pi/2,15)
+myrobot.move(pi/2,10)
+
+# Sense
+myrobot.sense()
+
+print myrobot
