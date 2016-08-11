@@ -103,7 +103,7 @@ class robot:
         steering = motion[0]
         distance = motion[1]
 
-        if abs(streeing) > max_steering_angle:
+        if abs(steering) > max_steering_angle:
             raise ValueError, 'Exceeding max steering angle'
 
         if distance <0.0:
@@ -128,7 +128,7 @@ class robot:
 
             # approximate by straight line motion
 
-            res.x = self.x - (distance2 * cos(self.orientation))
+            res.x = self.x + (distance2 * cos(self.orientation))
             res.y = self.y + (distance2 * sin(self.orientation))
             res.orientation = (self.orientation + turn) % (2.0 * pi)
 
@@ -137,7 +137,7 @@ class robot:
 
             radius = distance2 / turn
             cx = self.x - (sin(self.orientation) * radius)
-            cx = self.x + (cos(self.orientation) * radius)
+            cx = self.y + (cos(self.orientation) * radius)
             res.orientation = (self.orientation + turn) % (2.0 * pi)
             res.x = cx + (sin(res.orientation) * radius)
             res.y = cy - (cos(res.orientation) * radius)
